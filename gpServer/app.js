@@ -1,9 +1,11 @@
 // import express and morgan
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 
 const app = express();
 app.use(morgan("common"));
+app.use(cors());
 
 // require list of apps
 const apps = require("./playstore");
@@ -44,6 +46,4 @@ app.get("/apps", (req, res) => {
   res.json(results);
 });
 
-app.listen(8000, () => {
-  console.log("Server started on PORT 8000");
-});
+module.exports = app;
